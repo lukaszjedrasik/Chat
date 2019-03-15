@@ -22,6 +22,9 @@
               </v-flex>
             </v-layout>
           </v-form>
+          <v-layout justify-center>
+            <p v-if="feedback" class="red--text text--accent-3 subheading">Name can't be empty</p>
+          </v-layout>
           <v-layout justify-center class="pb-5">
             <v-btn @click="enterChat" color="cyan darken-3 white--text">Enter Chat</v-btn>
           </v-layout>
@@ -35,12 +38,17 @@
 export default {
   data() {
     return {
-      name: ""
+      name: "",
+      feedback: false
     };
   },
   methods: {
     enterChat() {
-      console.log(this.name);
+      if (this.name) {
+        this.$router.push("/chat");
+      } else {
+        this.feedback = true;
+      }
     }
   }
 };
