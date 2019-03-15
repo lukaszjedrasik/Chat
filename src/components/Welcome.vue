@@ -23,7 +23,7 @@
             </v-layout>
           </v-form>
           <v-layout justify-center>
-            <p v-if="feedback" class="red--text text--accent-3 subheading">Name can't be empty</p>
+            <p v-if="feedback" class="red--text text--accent-3 subheading">Name cannot be empty</p>
           </v-layout>
           <v-layout justify-center class="pb-5">
             <v-btn @click="enterChat" color="cyan darken-3 white--text">Enter Chat</v-btn>
