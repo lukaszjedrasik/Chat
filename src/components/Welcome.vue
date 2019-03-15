@@ -1,0 +1,50 @@
+<template>
+  <v-container>
+    <v-layout justify-center align-center fill-height>
+      <v-flex xs12 sm8>
+        <v-card>
+          <v-card-title>
+            <v-card-text>
+              <h2
+                class="text-xs-center display-3 font-weight-light cyan--text text--darken-3 pt-5"
+              >Welcome</h2>
+            </v-card-text>
+          </v-card-title>
+          <v-form @submit.prevent="enterChat">
+            <v-layout justify-center>
+              <v-flex xs10>
+                <v-text-field
+                  v-model.trim="name"
+                  label="Enter your name"
+                  color="cyan darken-3"
+                  class="p2-5"
+                ></v-text-field>
+              </v-flex>
+            </v-layout>
+          </v-form>
+          <v-layout justify-center class="pb-5">
+            <v-btn @click="enterChat" color="cyan darken-3 white--text">Enter Chat</v-btn>
+          </v-layout>
+        </v-card>
+      </v-flex>
+    </v-layout>
+  </v-container>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      name: ""
+    };
+  },
+  methods: {
+    enterChat() {
+      console.log(this.name);
+    }
+  }
+};
+</script>
+
+<style scoped lang='scss'>
+</style>
