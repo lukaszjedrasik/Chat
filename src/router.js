@@ -16,6 +16,7 @@ export default new Router({
     {
       path: "/chat",
       name: "Chat",
+      props: true,
       component: () => import("@/components/Chat")
     }
   ]

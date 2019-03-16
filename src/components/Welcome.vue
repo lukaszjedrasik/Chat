@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-layout justify-center align-center fill-height>
+    <v-layout justify-center class="pt-5">
       <v-flex xs12 sm8>
         <v-card>
           <v-card-title>
@@ -13,12 +13,7 @@
           <v-form @submit.prevent="enterChat">
             <v-layout justify-center>
               <v-flex xs10>
-                <v-text-field
-                  v-model.trim="name"
-                  label="Enter your name"
-                  color="cyan darken-3"
-                  class="p2-5"
-                ></v-text-field>
+                <v-text-field v-model.trim="name" label="Enter your name" color="cyan darken-3"></v-text-field>
               </v-flex>
             </v-layout>
           </v-form>
@@ -45,7 +40,7 @@ export default {
   methods: {
     enterChat() {
       if (this.name) {
-        this.$router.push("/chat");
+        this.$router.push({ name: "Chat", params: { name: this.name } });
       } else {
         this.feedback = true;
       }
