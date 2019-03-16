@@ -13,10 +13,13 @@
             v-if="feedback"
             class="red--text text--accent-3 font-weight-light subheading"
           >Message cannot be empty</p>
-          <p
+          <!-- <p
             v-if="sending"
             class="green--text text--accent-4 font-weight-light subheading"
-          >{{ sending }}</p>
+          >{{ sending }}</p>-->
+          <div v-if="sending">
+            <v-progress-linear :sending="true"></v-progress-linear>
+          </div>
         </v-layout>
       </v-card>
     </v-flex>
