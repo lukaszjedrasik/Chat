@@ -13,13 +13,10 @@
             v-if="feedback"
             class="red--text text--accent-3 font-weight-light subheading"
           >Message cannot be empty</p>
-          <!-- <p
+          <p
             v-if="sending"
             class="green--text text--accent-4 font-weight-light subheading"
-          >{{ sending }}</p>-->
-          <div v-if="sending">
-            <v-progress-linear :sending="true"></v-progress-linear>
-          </div>
+          >{{ sending }}</p>
         </v-layout>
       </v-card>
     </v-flex>
@@ -27,7 +24,8 @@
 </template>
 
 <script>
-import axiosBase from "@/axios_base";
+// import axiosBase from "@/axios_base";
+import db from "@/firebase/init";
 
 export default {
   props: ["name"],
@@ -44,12 +42,11 @@ export default {
         try {
           this.feedback = false;
           this.sending = "Sending...";
-          let response = await axiosBase.post("/messages.json", {
+          let response = await db.collection("messages").add({
             name: this.name,
             message: this.message,
             time: new Date().toLocaleTimeString()
           });
-          console.log(response);
         } catch (e) {
           console.log(e);
         }

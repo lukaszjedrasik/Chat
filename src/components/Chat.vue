@@ -9,8 +9,8 @@
     </v-layout>
     <v-layout class="mt-5">
       <v-flex>
-        <v-card class="py-3" height="400">
-          <ul v-for="(message,index) in getMessages" :key="index">
+        <v-card class="py-3" height="400" v-chat-scroll="{always:false, smooth:true}">
+          <ul v-for="message in messages" :key="message.id">
             <li
               class="pr-2 pb-2 cyan--text text--darken-3 subheading font-weight-light"
             >{{ message.name }}</li>
@@ -23,10 +23,11 @@
     </v-layout>
   </v-container>
 </template>
-
+ 
 <script>
 import NewMessage from "@/components/NewMessage";
-import axiosBase from "@/axios_base";
+import db from "@/firebase/init";
+// import axiosBase from "@/axios_base";
 
 export default {
   props: ["name"],
@@ -38,13 +39,34 @@ export default {
       next({ path: "/" });
     }
   },
+  data() {
+    return {
+      messages: []
+    };
+  },
   async created() {
-    await this.$store.dispatch("messages/get");
+    try {
+      let ref = await db.collection("messages").orderBy("time");
+
+      ref.onSnapshot(snapshot => {
+        snapshot.docChanges().forEach(change => {
+          if (change.type == "added") {
+            let doc = change.doc;
+            this.messages.push({
+              id: doc.id,
+              name: doc.data().name,
+              message: doc.data().message,
+              time: doc.data().time
+            });
+          }
+        });
+      });
+    } catch (e) {
+      console.log(e);
+    }
   },
   computed: {
-    getMessages() {
-      return this.$store.state.messages.messages;
-    }
+    getMessages() {}
   }
 };
 </script>
