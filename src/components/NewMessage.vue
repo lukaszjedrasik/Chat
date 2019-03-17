@@ -7,6 +7,7 @@
           class="mx-5 font-weight-light body-2"
           placeholder="message"
           color="cyan darken-3"
+          prepend-inner-icon="send"
         ></v-text-field>
         <v-layout justify-center>
           <p
@@ -24,8 +25,8 @@
 </template>
 
 <script>
-// import axiosBase from "@/axios_base";
 import db from "@/firebase/init";
+import moment from "moment";
 
 export default {
   props: ["name"],
@@ -45,7 +46,7 @@ export default {
           let response = await db.collection("messages").add({
             name: this.name,
             message: this.message,
-            time: new Date().toLocaleTimeString()
+            time: moment(Date.now()).format("lll")
           });
         } catch (e) {
           console.log(e);

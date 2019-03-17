@@ -27,7 +27,7 @@
 <script>
 import NewMessage from "@/components/NewMessage";
 import db from "@/firebase/init";
-// import axiosBase from "@/axios_base";
+import { all } from "q";
 
 export default {
   props: ["name"],
@@ -50,7 +50,7 @@ export default {
 
       ref.onSnapshot(snapshot => {
         snapshot.docChanges().forEach(change => {
-          if (change.type == "added") {
+          if (change.type === "added") {
             let doc = change.doc;
             this.messages.push({
               id: doc.id,
@@ -64,9 +64,6 @@ export default {
     } catch (e) {
       console.log(e);
     }
-  },
-  computed: {
-    getMessages() {}
   }
 };
 </script>
