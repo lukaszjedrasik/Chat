@@ -40,7 +40,7 @@ export default {
   methods: {
     enterChat() {
       if (this.name) {
-        this.$router.push({ name: "Chat", params: { name: this.name } });
+        this.$router.push({ name: "Chat", query: { name: this.name } });
       } else {
         this.feedback = true;
       }

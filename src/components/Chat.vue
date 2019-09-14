@@ -30,7 +30,6 @@ import db from "@/firebase/init";
 import { all } from "q";
 
 export default {
-  props: ["name"],
   components: { NewMessage },
   beforeRouteEnter(to, from, next) {
     
@@ -44,6 +43,11 @@ export default {
     return {
       messages: []
     };
+  },
+  computed: {
+    name () {
+      return this.$route.query.name
+    }
   },
   async created() {
     try {
