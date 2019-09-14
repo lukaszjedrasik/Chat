@@ -34,7 +34,7 @@ export default {
   components: { NewMessage },
   beforeRouteEnter(to, from, next) {
     
-    if (to.params.name || localStorage) {
+    if (to.params.name) {
       next();
     } else {
       next({ path: "/" });
@@ -53,6 +53,7 @@ export default {
         snapshot.docChanges().forEach(change => {
           if (change.type === "added") {
             let doc = change.doc;
+            
             this.messages.push({
               id: doc.id,
               name: doc.data().name,
@@ -65,7 +66,7 @@ export default {
     } catch (e) {
       console.log(e);
     }
-  }
+  },
 };
 </script>
 

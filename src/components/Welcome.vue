@@ -41,7 +41,6 @@ export default {
     enterChat() {
       if (this.name) {
         this.$router.push({ name: "Chat", params: { name: this.name } });
-        localStorage.setItem('userName', this.name);
       } else {
         this.feedback = true;
       }
