@@ -33,7 +33,7 @@ export default {
   props: ["name"],
   components: { NewMessage },
   beforeRouteEnter(to, from, next) {
-    if (to.params.name) {
+    if (to.params.name || localStorage) {
       next();
     } else {
       next({ path: "/" });
