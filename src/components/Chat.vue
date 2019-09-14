@@ -14,7 +14,7 @@
             <li
               class="pr-2 pb-2 cyan--text text--darken-3 subheading font-weight-light"
             >{{ message.name }}</li>
-            <li class="body-2 font-weight-light grey--text text--darken-2 dzban-message">{{ message.message }}</li>
+            <li class="body-3 font-weight-light white--text text--darken-3 dzban-message">{{ message.message }}</li>
             <li class="subheading grey--text caption font-weight-light pb-3">{{ message.time }}</li>
           </ul>
         </v-card>
@@ -32,12 +32,10 @@ import { all } from "q";
 export default {
   components: { NewMessage },
   beforeRouteEnter(to, from, next) {
-    
-    if (to.params.name) {
+    // debugger;
+    if (to.query.name) {
       next();
-    } else {
-      next({ path: "/" });
-    }
+    } 
   },
   data() {
     return {
