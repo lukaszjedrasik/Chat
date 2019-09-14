@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-layout justify-center class="pt-5">
+    <v-layout justify-center class="pt-5" dark>
       <v-flex xs12 sm8>
         <v-card>
           <v-card-title>
