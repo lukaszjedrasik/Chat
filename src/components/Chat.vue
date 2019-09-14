@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="py-0">
     <v-layout>
       <v-flex>
         <h4
@@ -14,7 +14,7 @@
             <li
               class="pr-2 pb-2 cyan--text text--darken-3 subheading font-weight-light"
             >{{ message.name }}</li>
-            <li class="body-2 font-weight-light grey--text text--darken-2">{{ message.message }}</li>
+            <li class="body-2 font-weight-light grey--text text--darken-2 dzban-message">{{ message.message }}</li>
             <li class="subheading grey--text caption font-weight-light pb-3">{{ message.time }}</li>
           </ul>
         </v-card>
